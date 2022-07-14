@@ -33,10 +33,10 @@ fun limitPerMonth(paymentSystem: String): Int{
 fun comission(paymentSystem: String, payment: Int): Double{
     val value: Double = when(paymentSystem){
         "VK Pay" -> 0.0
-        "Visa" -> (if (payment*0.0075 < 35) 35 else payment*0.0075) as Double
-        "Мир" -> (if (payment*0.0075 < 35) 35 else payment*0.0075) as Double
-        "Maestro" -> (if (payment > 75000) (payment*0.006+20) else 0) as Double
-        "Mastercard" -> (if (payment > 75000) (payment*0.006+20) else 0) as Double
+        "Visa" -> if (payment*0.0075 < 35) 35.0 else payment*0.0075
+        "Мир" -> if (payment*0.0075 < 35) 35.0 else payment*0.0075
+        "Maestro" -> if (payment > 75000.0) (payment*0.006+20) else 0.0
+        "Mastercard" -> if (payment > 75000) (payment*0.006+20) else 0.0
         else -> {0.0}
     }
     return value
